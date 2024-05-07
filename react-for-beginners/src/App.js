@@ -1,5 +1,4 @@
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-
 // 차이점;
 // BrowserRouter 는은 URl 생김새 보통의 웹사이트처럼 생김
 // HashRouter 를 사용한다면 조금 다른 #이 생김
