@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
 // 차이점;
 // BrowserRouter 는은 URl 생김새 보통의 웹사이트처럼 생김
@@ -10,11 +10,11 @@ function App() {
     return (
         // 먼저 랜더링 해주고
         <Router>
-            {/* Router를 찾는 Routes */}
+            {/* 한번에 하나의 route 만 렌더링 하기 위해서 넣어준 5.3버전 Switch 6버전 Routes */}
             <Routes>
                 {/* ROUTE 는 URL을 의미 */}
                 <Route path="/" element={<Home />}></Route>
-                <Route path="/movie" element={<Detail />}></Route>
+                <Route path="/movie/:id" element={<Detail />}></Route>
             </Routes>
         </Router>
     );

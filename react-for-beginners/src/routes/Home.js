@@ -19,7 +19,7 @@ function Home() {
             ) : (
                 <div>
                     {movies.map((item) => (
-                        <Movie key={item.id} medium_cover_image={item.medium_cover_image} title={item.title} summary={item.summary} genres={item.genres} />
+                        <Movie key={item.id} id={item.id} medium_cover_image={item.medium_cover_image} title={item.title} summary={item.summary} genres={item.genres} />
                     ))}
                 </div>
             )}
