@@ -12,8 +12,8 @@ function App() {
             {/* 한번에 하나의 route 만 렌더링 하기 위해서 넣어준 5.3버전 Switch 6버전 Routes */}
             <Routes>
                 {/* ROUTE 는 URL을 의미 */}
-                <Route path={`${process.env.PUBLIC_URL}/`} element={<Home />}></Route>
-                <Route path={`${process.env.PUBLIC_URL}/movie/:id`} element={<Detail />}></Route>
+                <Route path="/" element={<Home />}></Route>
+                <Route path="/movie/:id" element={<Detail />}></Route>
             </Routes>
         </Router>
     );
