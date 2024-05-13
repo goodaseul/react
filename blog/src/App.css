@@ -1,0 +1,15 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+.black-nav {
+    display: flex;
+    background: #000;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    color: #fff;
+    padding: 15px 30px;
+    font-size: 70px;
+}
