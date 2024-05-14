@@ -1,14 +1,21 @@
 /* eslint-disable */
 import { useState } from "react";
 import { Navbar, Container, Nav } from "react-bootstrap";
+import { Routes, Route, Link, useNavigate, Outlet } from "react-router-dom";
 
-import bg from "./img/bg.png";
-import "./App.css";
-
+//자료
 import shopData from "./data";
+
+//components
+import Home from "./components/Home";
+import Detail from "./components/Detail";
+
+//css
+import "./App.css";
 
 function App() {
     let [shoes, setShoes] = useState(shopData);
+    let navigate = useNavigate();
 
     return (
         <div className="App">
@@ -16,36 +23,47 @@ function App() {
                 <Container>
                     <Navbar.Brand href="#home">Goodaseul</Navbar.Brand>
                     <Nav className="me-auto">
-                        <Nav.Link href="#home">Home</Nav.Link>
-                        <Nav.Link href="#features">Cart</Nav.Link>
+                        {/* <Link to="/">Home</Link>
+                        <Link to="/detail">Detail</Link> */}
+                        <Nav.Link onClick={() => navigate("/")}>Home</Nav.Link>
+                        <Nav.Link onClick={() => navigate("/detail")}>Detail</Nav.Link>
                     </Nav>
                 </Container>
             </Navbar>
+            <Routes>
+                <Route path="/" element={<Home shoes={shoes}></Home>} />
+                <Route path="/detail/:id" element={<Detail shoes={shoes}></Detail>} />
 
-            <div className="main-bg" style={{ backgroundImage: `url(${bg})` }}></div>
-            <div className="container">
-                <div className="row">
-                    <List shoes={shoes} />
-                </div>
-            </div>
+                <Route path="/about" element={<NestedRoutes />}>
+                    <Route path="member" element={<h5>난 멤버지롱</h5>} />
+                    <Route path="location" element={<h5>난 로케이션이지롱</h5>} />
+                </Route>
+
+                <Route path="/event" element={<Event />}>
+                    <Route path="one" element={<h5>첫 주문 시 양배추즙 서비스</h5>} />
+                    <Route path="two" element={<h5>생일기념 쿠폰받기</h5>} />
+                </Route>
+                <Route path="*" element={<div>e!r!r!o!r</div>} />
+            </Routes>
         </div>
     );
 }
-function List(props) {
+
+function Event() {
     return (
-        <>
-            {props.shoes.map((item, index) => {
-                return (
-                    <div className="col-md-4" key={index}>
-                        {/* <img src={process.env.PUBLIC_URL + "/logo192.png"} width="80%" /> */}
-                        <img src={`https://codingapple1.github.io/shop/shoes${index + 1}.jpg`} width="80%" />
-                        <h4>{item.title}</h4>
-                        <p>{item.content}</p>
-                        <p>{item.price}</p>
-                    </div>
-                );
-            })}
-        </>
+        <div>
+            <h4>오늘의 이벤트</h4>
+            <Outlet></Outlet>
+        </div>
+    );
+}
+
+function NestedRoutes() {
+    return (
+        <div>
+            <h4>Nested Routes</h4>
+            <Outlet></Outlet>
+        </div>
     );
 }
 
