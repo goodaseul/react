@@ -43,3 +43,39 @@
     background-size: cover;
     background-position: center center;
 }
+
+.tabmenu {
+    display: flex;
+    align-items: center;
+    margin-top: 50px;
+}
+.tabmenu button {
+    width: 100%;
+    border: none;
+    font-size: 18px;
+    padding: 10px 0;
+}
+.tabmenu button:first-of-type {
+    background: #fafafa;
+}
+
+.tabmenu button:nth-of-type(2) {
+    background: #eee;
+}
+
+.tabmenu button:nth-of-type(3) {
+    background: #aaa;
+}
+
+.tabContent div {
+    padding: 50px;
+    background: #fafafa;
+}
+
+.start {
+    opacity: 0;
+}
+.end {
+    opacity: 1;
+    transition: all 0.5s;
+}

@@ -10,6 +10,8 @@ function Home(props) {
                     <List shoes={props.shoes} />
                 </div>
             </div>
+
+            {props.clickPage === 4 ? null : <button onClick={props.axiosButton}>Ajax버튼</button>}
         </>
     );
 }

@@ -1,6 +1,5 @@
-import { useState } from "react";
-
 function List(props) {
+    console.log(props);
     return (
         <>
             {props.shoes.map((item, index) => {
