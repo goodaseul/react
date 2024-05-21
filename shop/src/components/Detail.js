@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
-import { addItem } from "../store";
+import { addItem } from "../store.js";
 
 function Detail(props) {
     const [time, setTime] = useState(true);
@@ -10,7 +10,6 @@ function Detail(props) {
     useEffect(() => {
         let timeOut = setTimeout(() => setTime(false), 2000);
         console.log(2);
-
         return () => {
             console.log(1);
             clearTimeout(timeOut);
@@ -46,6 +45,15 @@ function Detail(props) {
             clearTimeout(to2);
             setFade2("");
         };
+    }, []);
+
+    useEffect(() => {
+        let getOff = localStorage.getItem("watched");
+        getOff = JSON.parse(getOff);
+        getOff.push(paramCorrect.id);
+        getOff = new Set(getOff);
+        getOff = Array.from(getOff);
+        localStorage.setItem("watched", JSON.stringify(getOff));
     }, []);
 
     return (

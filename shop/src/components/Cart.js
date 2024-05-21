@@ -1,13 +1,24 @@
 import { Table } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { changeAge } from "./../store/userSlice";
-import { changeQuantity } from "./../store";
+import { addCount, removeCount } from "../store.js";
+import { memo, useState } from "react";
+
+let Child = memo(function () {
+    console.log("재 렌더링됨");
+    return <div>자식이용</div>;
+});
 
 function Cart() {
     const stateStore = useSelector((state) => state);
     let dispatch = useDispatch(); // store.js 로 요청보내주는 함수
+
+    let [count, setCount] = useState(0);
+
     return (
         <div>
+            <Child count={count}></Child>
+            <button onClick={() => setCount(count + 1)}>재렌더링 버튼 </button>
             {stateStore.user.name}의 장바구니
             {stateStore.user.age}
             <button
@@ -43,11 +54,18 @@ function Cart() {
                                 <td>
                                     <button
                                         onClick={() => {
-                                            dispatch(changeQuantity(stateStore.product[index].id));
-                                            // index 보단 버튼의 옆의 id값을 가져오는 거가 좀 더 정확
+                                            dispatch(addCount(stateStore.product[index].id));
                                         }}
                                     >
                                         +
+                                    </button>
+
+                                    <button
+                                        onClick={() => {
+                                            dispatch(removeCount(stateStore.product[index].id));
+                                        }}
+                                    >
+                                        delete
                                     </button>
                                 </td>
                             </tr>

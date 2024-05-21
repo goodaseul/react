@@ -21,12 +21,11 @@ let product = createSlice({
         },
     ],
     reducers: {
-        changeQuantity(state, action) {
-            //array 원하는 거 몇번째에 있는지 알려주는 함수
-            let num = state.findIndex((data) => {
+        addCount(state, action) {
+            let corretNum = state.findIndex((data) => {
                 return data.id === action.payload;
             });
-            state[num].count++;
+            state[corretNum].count += 1;
         },
         addItem(state, action) {
             state.push(action.payload);
@@ -34,7 +33,7 @@ let product = createSlice({
     },
 });
 
-export let { changeQuantity, addItem } = product.actions; // 오른쪽 자료를 변수로 빼는 문법
+export let { addCount, addItem, removeCount } = product.actions; // 오른쪽 자료를 변수로 빼는 문법
 
 export default configureStore({
     reducer: {
