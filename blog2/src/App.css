@@ -7,11 +7,12 @@
   font-style: normal;
 }
 
-* .godam {
-  font-family: "Gowun Dodum", sans-serif;
+* .noto {
+  font-family: "Noto Sans KR", sans-serif;
 }
 
 * button {
+  cursor: pointer;
   background: darkblue;
   color: #fff;
   border-radius: 1rem 0;
@@ -21,43 +22,126 @@
   margin: 1rem 0.5rem;
 }
 
-.black_nav {
+* .inner {
+  padding: 0 1.5rem;
+}
+
+.App .black_nav {
   display: flex;
   background-color: black;
   width: 100%;
   color: #fff;
-  padding-left: 20px;
-  padding: 1rem;
+  padding: 1rem 0;
 }
 
-.list {
-  padding: 0.5rem 1rem;
+.App .section_input {
+  border-bottom: 1px solid #000;
+}
+
+.App .section_input h2 {
+  font-size: 1.3rem;
+  margin: 2rem 0 1rem;
+}
+
+.App .section_input .input_area {
+  margin-bottom: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.App .section_input .input_area input {
+  width: 80%;
+  padding: 0 0.5rem;
+}
+
+.App .section_input .input_area button {
+  padding: 0.5rem;
+  margin: 0;
+  width: 15%;
+}
+
+.App .section_list {
+  padding: 1rem 0;
+}
+
+.App .section_list .list {
+  position: relative;
+  padding: 1rem;
   border-bottom: 2.5px dotted darkblue;
 }
 
-.list .headline {
+.App .section_list .list .headline {
+  text-align: right;
   margin-bottom: 1rem;
   color: darkblue;
 }
 
-.list p {
-  text-align: right;
-  font-family: "Gowun Dodum", sans-serif;
+.App .section_list .list .headline h2 {
+  text-align: left;
+  cursor: pointer;
+  margin-bottom: 1rem;
 }
 
-.modal {
+.App .section_list .list .headline p {
+  cursor: pointer;
+  font-family: "Noto Sans KR", sans-serif !important;
+}
+
+.App .section_list .list .remove {
+  border-radius: 100%;
+  width: 1.5rem;
+  height: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  transition: all 0.1s;
+  background-color: #eee;
+  color: #000;
+}
+
+.App .section_list .list .remove:hover {
+  background-color: red;
+  color: #fff;
+}
+
+.App .modal {
   width: 100%;
   height: 100%;
   position: fixed;
   left: 0;
   top: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.8);
   color: #fff;
-  padding: 1rem;
+  padding: 6rem 1rem 0;
 }
 
-.modal button {
+.App .modal .closebtn {
   position: absolute;
   right: 1rem;
   top: 1rem;
+}
+
+.App .modal h4 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.App .modal .date {
+  text-align: right;
+  font-family: "Noto Sans KR", sans-serif !important;
+}
+
+.App .modal .content {
+  font-size: 1.5rem;
+}
+
+.App .modal .changeBtn {
+  position: relative;
 }

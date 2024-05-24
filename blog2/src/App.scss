@@ -5,10 +5,11 @@
     font-family: "Black Han Sans", sans-serif;
     font-weight: 400;
     font-style: normal;
-    .godam {
-        font-family: "Gowun Dodum", sans-serif;
+    .noto {
+        font-family: "Noto Sans KR", sans-serif;
     }
     button {
+        cursor: pointer;
         background: darkblue;
         color: #fff;
         border-radius: 1rem 0;
@@ -17,39 +18,113 @@
         border: none;
         margin: 1rem 0.5rem;
     }
-}
-.black_nav {
-    display: flex;
-    background-color: black;
-    width: 100%;
-    color: #fff;
-    padding-left: 20px;
-    padding: 1rem;
-}
-.list {
-    padding: 0.5rem 1rem;
-    border-bottom: 2.5px dotted darkblue;
-    .headline {
-        margin-bottom: 1rem;
-        color: darkblue;
-    }
-    p {
-        text-align: right;
-        font-family: "Gowun Dodum", sans-serif;
+    .inner {
+        padding: 0 1.5rem;
     }
 }
-.modal {
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    left: 0;
-    top: 0;
-    background: rgba(0, 0, 0, 0.5);
-    color: #fff;
-    padding: 1rem;
-    button {
-        position: absolute;
-        right: 1rem;
-        top: 1rem;
+.App {
+    .black_nav {
+        display: flex;
+        background-color: black;
+        width: 100%;
+        color: #fff;
+        padding: 1rem 0;
+    }
+    .section {
+        &_input {
+            border-bottom: 1px solid #000;
+            h2 {
+                font-size: 1.3rem;
+                margin: 2rem 0 1rem;
+            }
+            .input_area {
+                margin-bottom: 2rem;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                input {
+                    width: 80%;
+                    padding: 0 0.5rem;
+                }
+                button {
+                    padding: 0.5rem;
+                    margin: 0;
+                    width: 15%;
+                }
+            }
+        }
+        &_list {
+            padding: 1rem 0;
+            .list {
+                position: relative;
+                padding: 1rem;
+                border-bottom: 2.5px dotted darkblue;
+                .headline {
+                    text-align: right;
+                    margin-bottom: 1rem;
+                    color: darkblue;
+                    h2 {
+                        text-align: left;
+                        cursor: pointer;
+                        margin-bottom: 1rem;
+                    }
+                    p {
+                        cursor: pointer;
+
+                        font-family: "Noto Sans KR", sans-serif !important;
+                    }
+                }
+                .remove {
+                    border-radius: 100%;
+                    width: 1.5rem;
+                    height: 1.5rem;
+                    display: flex;
+                    flex-wrap: wrap;
+                    align-items: center;
+                    justify-content: center;
+                    padding: 0;
+                    margin: 0;
+                    position: absolute;
+                    right: 1rem;
+                    top: 1rem;
+                    transition: all 0.1s;
+                    background-color: #eee;
+                    color: #000;
+                    &:hover {
+                        background-color: red;
+                        color: #fff;
+                    }
+                }
+            }
+        }
+    }
+    .modal {
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        left: 0;
+        top: 0;
+        background: rgba(0, 0, 0, 0.8);
+        color: #fff;
+        padding: 6rem 1rem 0;
+        .closebtn {
+            position: absolute;
+            right: 1rem;
+            top: 1rem;
+        }
+        h4 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        .date {
+            text-align: right;
+            font-family: "Noto Sans KR", sans-serif !important;
+        }
+        .content {
+            font-size: 1.5rem;
+        }
+        .changeBtn {
+            position: relative;
+        }
     }
 }
