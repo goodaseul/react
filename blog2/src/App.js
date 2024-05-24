@@ -26,7 +26,6 @@ function App() {
         copy[0] = storageCopy[0];
         setHeadline(copy);
     }
-    console.log(headline, storage[0]);
     function changeHeadlineSort() {
         let copy = [...headline];
         console.log("click");
@@ -117,13 +116,14 @@ function App() {
                     {headline.map((item, index) => {
                         return (
                             <div className="list" key={index}>
-                                <div
-                                    className="headline"
-                                    onClick={function (e) {
-                                        modalShow(index);
-                                    }}
-                                >
-                                    <h2>{item}</h2>
+                                <div className="headline">
+                                    <h2
+                                        onClick={function (e) {
+                                            modalShow(index);
+                                        }}
+                                    >
+                                        {item}
+                                    </h2>
                                     <p
                                         onClick={function (e) {
                                             e.stopPropagation();
