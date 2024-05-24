@@ -9,6 +9,7 @@ function App() {
     let [title, setTitle] = useState(0);
     let [inputValue, setInputValue] = useState("");
     let [pusblishDate, setPublishDate] = useState(["22/05/23", "23/05/23", "24/05/23"]);
+    let [storage, setStorage] = useState([]);
     function likeClick(target) {
         let copy = [...like];
         copy[target] += 1;
@@ -21,9 +22,11 @@ function App() {
     }
     function changeHeadlineBack() {
         let copy = [...headline];
-        copy[0] = "220523_";
+        let storageCopy = [...storage];
+        copy[0] = storageCopy[0];
         setHeadline(copy);
     }
+    console.log(headline, storage[0]);
     function changeHeadlineSort() {
         let copy = [...headline];
         console.log("click");
@@ -34,6 +37,7 @@ function App() {
             return b < a ? -1 : b == a ? 0 : 1;
         });
         setHeadline(copy);
+        setStorage(copy);
     }
     function modalShow(titleNum) {
         setIsModal((isModal = true));
@@ -50,15 +54,18 @@ function App() {
             alert("hey empty!");
             return;
         }
-        let copy = [...headline];
+        storage = [...headline];
         let copyLike = [...like];
-        copy.push(inputValue);
+        storage.push(inputValue);
         copyLike.push(0);
 
-        setHeadline(copy);
+        setStorage(storage);
+        setHeadline(storage);
         setLike(copyLike);
         datePublish();
         inputFocus();
+
+        return storage;
     }
     function removeValue(index) {
         let copy = [...headline];
