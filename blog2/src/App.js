@@ -10,6 +10,8 @@ function App() {
     let [inputValue, setInputValue] = useState("");
     let [pusblishDate, setPublishDate] = useState(["22/05/23", "23/05/23", "24/05/23"]);
     let [storage, setStorage] = useState([]);
+    let [dateStorage, setDateStorage] = useState([]);
+
     function likeClick(target) {
         let copy = [...like];
         copy[target] += 1;
@@ -28,7 +30,6 @@ function App() {
     }
     function changeHeadlineSort() {
         let copy = [...headline];
-        console.log("click");
         copy.sort((a, b) => {
             if (!isNaN(a) && !isNaN(b)) return b - a;
             var a = a.toString();
@@ -37,6 +38,9 @@ function App() {
         });
         setHeadline(copy);
         setStorage(copy);
+        // let pusblishDateCopy = [...pusblishDate];
+
+        //     = setDateStorage(pusblishDateCopy);
     }
     function modalShow(titleNum) {
         setIsModal((isModal = true));
@@ -173,7 +177,7 @@ function ChangeBtn(props) {
         <div className="inner">
             <button onClick={props.changeHeadline}>첫번째 제목 바꾸기</button>
             <button onClick={props.changeHeadlineBack}>첫번째 제목 돌아가기</button>
-            <button onClick={props.changeHeadlineSort}>가나다 순 정렬</button>
+            {/* <button onClick={props.changeHeadlineSort}>가나다 순 정렬</button> */}
         </div>
     );
 }
