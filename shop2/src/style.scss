@@ -1,0 +1,105 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    font-family: "IBM Plex Sans KR", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    button {
+        background: none;
+        outline: none;
+        border: none;
+        cursor: pointer;
+    }
+    a {
+        color: inherit;
+        text-decoration: none;
+    }
+    .btn {
+        width: 20vw;
+        background-color: #222;
+        color: #fff;
+        padding: 2vw;
+        border-radius: 1vw;
+        margin-top: 5vw;
+        + .btn {
+            margin-left: 1vw;
+        }
+    }
+}
+
+.App {
+    padding: 5vw 0;
+    header {
+        padding: 2vw 5vw;
+
+        background: #000;
+        color: #fff;
+        h1 {
+            font-weight: bold;
+        }
+        nav {
+            display: block;
+            ul {
+                display: flex;
+                justify-content: flex-end;
+                li {
+                    + li {
+                        padding-left: 2vw;
+                    }
+                }
+            }
+        }
+    }
+    .proudct_list {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        .list {
+            width: calc((100% - 4%) / 3);
+            img {
+                max-width: 100%;
+                width: 100%;
+            }
+            :not(img) {
+                padding: 0 1vw;
+            }
+        }
+    }
+    .detail {
+        .wrap {
+            > div {
+                padding: 0 1vw;
+                &.wrap_img {
+                    img {
+                        max-width: 100%;
+                    }
+                }
+                &.wrap_info {
+                    text-align: center;
+                    :not(button) {
+                        margin-bottom: 1vw;
+                    }
+                    h2 {
+                        font-size: 6vw;
+                        font-weight: bold;
+                    }
+                    p {
+                        font-size: 3vw;
+                        text-align: right;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.main_bg {
+    height: 300px;
+    // background-image: url(./img/bg.png);
+    background-size: cover;
+    background-position: center center;
+}
