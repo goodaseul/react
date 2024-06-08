@@ -7,6 +7,7 @@ import Detail from "./components/Detail";
 
 import { useState } from "react";
 import { Routes, Route, Link, useNavigate, Outlet } from "react-router-dom";
+
 function App() {
     let [shoes, setShoes] = useState(data);
     let navigate = useNavigate();
@@ -31,7 +32,7 @@ function App() {
             </header>
             <Link></Link>
             <Routes>
-                <Route path="/" element={<Home shoes={shoes} bg={bg}></Home>} />
+                <Route path="/" element={<Home setShoes={setShoes} shoes={shoes} bg={bg}></Home>} />
                 <Route path="/detail/:id" element={<Detail shoes={shoes}></Detail>} />
                 <Route path="/about" element={<About></About>}>
                     <Route path="member" element={<div>어바웃 안에 멤버 페이지임</div>} />

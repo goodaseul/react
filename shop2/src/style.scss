@@ -11,6 +11,7 @@
         outline: none;
         border: none;
         cursor: pointer;
+        display: block;
     }
     a {
         color: inherit;
@@ -73,6 +74,7 @@
         .wrap {
             > div {
                 padding: 0 1vw;
+
                 &.wrap_img {
                     img {
                         max-width: 100%;
@@ -92,6 +94,13 @@
                         text-align: right;
                     }
                 }
+
+                &.banner {
+                    background: darkseagreen;
+                    color: #fff;
+                    padding: 2.5vw 1vw;
+                    text-align: center;
+                }
             }
         }
     }
@@ -102,4 +111,13 @@
     // background-image: url(./img/bg.png);
     background-size: cover;
     background-position: center center;
+}
+.more_btn {
+    border-radius: 1.5vw;
+    width: 15vw;
+    height: 5vw;
+    font-size: 2vw;
+    margin: 0 auto;
+    background: #222;
+    color: #fff;
 }
