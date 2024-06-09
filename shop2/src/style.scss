@@ -101,6 +101,38 @@
                     padding: 2.5vw 1vw;
                     text-align: center;
                 }
+                &.wrap_tab {
+                    margin-top: 5vw;
+                    .tabs {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        li {
+                            width: 100%;
+                            text-align: center;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .cart {
+        table {
+            width: 100%;
+            table-layout: fixed;
+            border-collapse: collapse;
+            thead {
+                border-bottom: 3px double #000;
+            }
+            tbody {
+                border-bottom: 1px solid #eee;
+            }
+            tr {
+                th,
+                td {
+                    padding: 1%;
+                    text-align: center;
+                }
             }
         }
     }
@@ -120,4 +152,28 @@
     margin: 0 auto;
     background: #222;
     color: #fff;
+}
+
+.recently_show {
+    padding: 1%;
+    height: 100%;
+    overflow-y: scroll;
+    p {
+        color: #fff;
+    }
+    img {
+        width: 20%;
+    }
+}
+
+// animation
+// 동작전
+.start {
+    opacity: 0;
+}
+// 동작후
+// transition
+.end {
+    opacity: 1;
+    transition: opacity 0.5s;
 }

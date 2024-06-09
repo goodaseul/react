@@ -94,6 +94,34 @@
   padding: 2.5vw 1vw;
   text-align: center;
 }
+.App .detail .wrap > div.wrap_tab {
+  margin-top: 5vw;
+}
+.App .detail .wrap > div.wrap_tab .tabs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.App .detail .wrap > div.wrap_tab .tabs li {
+  width: 100%;
+  text-align: center;
+}
+.App .cart table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+.App .cart table thead {
+  border-bottom: 3px double #000;
+}
+.App .cart table tbody {
+  border-bottom: 1px solid #eee;
+}
+.App .cart table tr th,
+.App .cart table tr td {
+  padding: 1%;
+  text-align: center;
+}
 
 .main_bg {
   height: 300px;
@@ -109,4 +137,25 @@
   margin: 0 auto;
   background: #222;
   color: #fff;
+}
+
+.recently_show {
+  padding: 1%;
+  height: 100%;
+  overflow-y: scroll;
+}
+.recently_show p {
+  color: #fff;
+}
+.recently_show img {
+  width: 20%;
+}
+
+.start {
+  opacity: 0;
+}
+
+.end {
+  opacity: 1;
+  transition: opacity 0.5s;
 }
