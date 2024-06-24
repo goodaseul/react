@@ -5,10 +5,10 @@ import Profile from "./routes/profile";
 import Login from "./routes/login";
 import CreateAccount from "./routes/create-account";
 import { createGlobalStyle, styled } from "styled-components";
-
 import reset from "styled-reset";
 import { useEffect, useState } from "react";
 import LoadingScreen from "./components/loading-screen";
+// import { auth } from "./firebase";
 import ProtectedRoute from "./components/protected-route";
 
 const router = createBrowserRouter([
@@ -61,7 +61,7 @@ const Wrapper = styled.div`
 function App() {
     const [isLoading, setIsLoading] = useState(true);
     const init = async () => {
-        //firebase 기다리기
+        // await auth.authStateReady();
         setIsLoading(false);
     };
 

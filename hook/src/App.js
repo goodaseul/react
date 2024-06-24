@@ -1,33 +1,115 @@
-import { useEffect, useState } from "react";
-import Timer from "./component/Timer";
-const App = () => {
-    // state가 없데이트 될때마다 재렌더링
-    const [count, setCount] = useState(1);
-    const [name, setName] = useState("");
+import { useState } from "react";
+import UseInput from "./useInput";
+import UseTab from "./useTab";
+import UseTitle from "./useTitle";
+import UseClick from "./useClick";
+import UseHover from "./useHover";
+import UseConfirm from "./useConfirm";
+import UsePreventLeave from "./usePreventLeave";
+import UseBeforeLeave from "./useBeforeLeave";
 
-    const handleCountUpdate = () => {
-        setCount(count + 1);
+const content = [
+    {
+        tab: "Section 1",
+        content: "I'm the content of the Section 1",
+    },
+    {
+        tab: "Section 2",
+        content: "I'm the content of the Section 2",
+    },
+    {
+        tab: "Section 3",
+        content: "I'm the content of the Section 3",
+    },
+];
+
+const useInputPr = (initialValue, validator) => {
+    const [value, setValue] = useState(initialValue);
+
+    const onChange = (event) => {
+        let willChange = true;
+        const {
+            target: { value },
+        } = event;
+
+        if (typeof validator === "function") {
+            willChange = validator(value);
+        }
+
+        if (willChange) {
+            setValue(value);
+        }
     };
 
-    const handleInputChange = (e) => {
-        setName(e.target.value);
+    return {
+        value,
+        onChange,
     };
+};
 
-    // 렌더링 될때마다 매번 실행됨
-    useEffect(() => {
-        console.log("렌더링");
-    }, [count]); // []일 때 한번만 //
-
-    const [showTimer, setShowTimer] = useState(false);
+const UseInputPr = () => {
+    const maxLen = (value) => value.length < 12;
+    const name = useInputPr("name:", maxLen);
     return (
-        <div className="App">
-            <button onClick={handleCountUpdate}>Update</button>
-            <span>count : {count}</span>
-            <input onChange={handleInputChange} value={name} type="text" />
-            <span>name: {name}</span>
-            {showTimer && <Timer />}
-            <button onClick={() => setShowTimer(!showTimer)}>Toggle Timer</button>
-        </div>
+        <>
+            <h1># useInputPractice</h1>
+            <input placeholder="Name" {...name} />
+        </>
+    );
+};
+
+const useTabPr = (initalTab, allTabs) => {
+    const [currentIndex, setCurrentIndex] = useState(initalTab);
+
+    if (!allTabs || !Array.isArray(allTabs)) {
+        return;
+    }
+
+    return {
+        currentItem: allTabs[currentIndex],
+        changeItem: setCurrentIndex,
+    };
+};
+
+const UseTabPr = () => {
+    const { currentItem, changeItem } = useTabPr(0, content);
+    return (
+        <>
+            <h1># useTabPractice</h1>
+            {content.map((section, index) => (
+                <button onClick={() => changeItem(index)} key={index}>
+                    {section.tab}
+                </button>
+            ))}
+
+            {currentItem.content}
+        </>
+    );
+};
+
+const App = () => {
+    return (
+        <>
+            <div className="useState">
+                <h1>hook_useState</h1>
+                <UseInput />
+                <UseTab />
+                <UseInputPr />
+                <UseTabPr />
+            </div>
+            <div className="useEffect">
+                <h1>hook_useEffect</h1>
+                <UseTitle />
+                <UseClick />
+                <UseHover />
+                <UseBeforeLeave />
+            </div>
+            <div className="">
+                <h1>hook_useConfirm & usePreventLeave</h1>
+                <UseConfirm />
+                <UsePreventLeave />
+            </div>
+        </>
     );
 };
 

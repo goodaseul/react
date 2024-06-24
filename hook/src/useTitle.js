@@ -1,28 +1,27 @@
 import { useEffect, useState } from "react";
 
-const useTitle = (initialTitle) => {
-    const [title, setTitle] = useState(initialTitle);
-
+const useTitle = (initalTitle) => {
+    const [title, setTitle] = useState(initalTitle);
     const updateTitle = () => {
         const htmlTitle = document.querySelector("title");
         htmlTitle.innerText = title;
     };
-
     useEffect(updateTitle, [title]);
+    // mount 됐을 때 updateTitle 을 부를거고, title이 변경된다면 다시 부를거야
     return setTitle;
 };
 
-//////////////////////////////////////////////////////////////////
-
 const UseTitle = () => {
-    // titleUpdater == 위에 useTitle return 값과 동일
-    const titleUpdater = useTitle("Loading...");
-    setTimeout(() => titleUpdater("Home"), 5000);
+    const titleUpdate = useTitle("Loading...");
+
+    setTimeout(() => {
+        titleUpdate("Home");
+    }, 5000);
+
     return (
-        <div className="App">
-            <div></div>
-        </div>
+        <>
+            <h1># useTitle</h1>
+        </>
     );
 };
-
 export default UseTitle;
