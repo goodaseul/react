@@ -7,6 +7,7 @@ import UseHover from "./useHover";
 import UseConfirm from "./useConfirm";
 import UsePreventLeave from "./usePreventLeave";
 import UseBeforeLeave from "./useBeforeLeave";
+import UseFadeIn from "./useFadeIn";
 
 const content = [
     {
@@ -104,6 +105,7 @@ const App = () => {
                 <UseHover />
                 <UseBeforeLeave />
             </div>
+            <UseFadeIn />
             <div className="">
                 <h1>hook_useConfirm & usePreventLeave</h1>
                 <UseConfirm />
