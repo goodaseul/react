@@ -8,6 +8,11 @@ import UseConfirm from "./useConfirm";
 import UsePreventLeave from "./usePreventLeave";
 import UseBeforeLeave from "./useBeforeLeave";
 import UseFadeIn from "./useFadeIn";
+import UseNetwork from "./useNetwork";
+import UseScroll from "./useScroll";
+import UseFullScreen from "./useFullScreen";
+import UseNotification from "./useNotification";
+import UseAxios from "./useAxios";
 
 const content = [
     {
@@ -104,8 +109,13 @@ const App = () => {
                 <UseClick />
                 <UseHover />
                 <UseBeforeLeave />
+                <UseFadeIn />
+                <UseNetwork />
+                <UseScroll />
+                <UseFullScreen />
+                <UseNotification />
+                <UseAxios />
             </div>
-            <UseFadeIn />
             <div className="">
                 <h1>hook_useConfirm & usePreventLeave</h1>
                 <UseConfirm />
