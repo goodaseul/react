@@ -5,7 +5,7 @@ const TodoBoard = (props) => {
     return (
         <div>
             <h1>Todo List</h1>
-            <TodoList item={props.item} />
+            <TodoList item={props.item} setItem={props.setItem} />
         </div>
     );
 };

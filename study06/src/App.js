@@ -10,7 +10,6 @@ function App() {
 
     const addItem = () => {
         let copyItem = setItem([...item, inputValue]);
-        console.log(copyItem);
     };
 
     return (
@@ -19,7 +18,7 @@ function App() {
                 <input value={inputValue} type="text" onChange={(e) => onChange(e)} />
                 <button onClick={addItem}>추가</button>
 
-                <TodoBoard item={item} />
+                <TodoBoard item={item} setItem={setItem} />
             </main>
         </div>
     );
