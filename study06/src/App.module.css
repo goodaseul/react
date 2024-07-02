@@ -1,0 +1,13 @@
+.button {
+    font-size: 2rem;
+    background-color: red;
+    margin-top: 20px;
+}
+.button:hover {
+    background-color: orange;
+}
+@media (max-width: 600px) {
+    .button {
+        background-color: gray;
+    }
+}
