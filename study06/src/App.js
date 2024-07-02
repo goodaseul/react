@@ -1,30 +1,30 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useMemo } from "react";
+import Todopage from "./Todopage";
+
+const expensiveCalculate = (numbers) => {
+    console.log("계산중");
+    return numbers.reduce((acc, curr) => acc + curr, 0);
+};
 
 export default function App() {
-    const [stateCount, setStateCount] = useState(0);
-    const refCount = useRef(0);
-    // 변수처럼 값을 저장할 필요가 있을 때, 단 UI 에 보일 필요가 없는 / UI가 보여줘야한다? 하면 useState 로 가야함
-    // ex 검색할 때 input 안에 검색할 내용이 똑같을 때 - 불필요한 서버 호출을 막아주고 싶을 때
-    // UI 애니메이션 구현을 할 때 dom 다루듯이 많이 사용 - top 버튼
+    const [numbers, setNumbers] = useState([1, 2, 3, 4, 5]);
+    const [addNumber, setAddNumber] = useState("");
+    const sum = useMemo(() => expensiveCalculate(numbers), [numbers]); // 이 값만 메모리에 저장 // numbers 바뀔 때만 다시 업데이트해줘
 
-    const inputEl = useRef(null);
-    console.log("input", inputEl);
-    const inputFocus = () => {};
+    const handleAddNumber = () => {
+        setNumbers([...numbers, parseInt(addNumber)]);
+        setAddNumber("");
+    };
+
     return (
         <div>
-            <div> state : {stateCount}</div>
-            <button onClick={() => setStateCount((prev) => (prev += 1))}>state up</button>
-            <div> ref : {refCount.current}</div>
-            <button
-                onClick={() => {
-                    refCount.current++;
-                    console.log("ref", refCount);
-                }}
-            >
-                ref up
-            </button>
-            <input type="text" ref={inputEl} />
-            <button onClick={() => inputEl.current.focus()}>검색</button>
+            <div>
+                <input type="text" value={addNumber} onChange={(e) => setAddNumber(e.target.value)} />
+                <button onClick={handleAddNumber}>계산</button>
+                <h2>Number : {numbers.join(", ")}</h2>
+                <h2>Sum : {sum}</h2>
+            </div>
+            <Todopage />
         </div>
     );
 }
