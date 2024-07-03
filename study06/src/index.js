@@ -4,8 +4,8 @@ import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import "./App.css";
 import "./index.css";
-import { ThemeProvider } from "@mui/material";
-import { theme } from "./defaultTheme";
+// import { ThemeProvider } from "@mui/material";
+// import { theme } from "./defaultTheme";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
