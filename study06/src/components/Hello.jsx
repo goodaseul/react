@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import UserName from "./UserName";
+import styles from "./Hello.module.css";
 const Hello = ({ age }) => {
     const [name, setName] = useState("Mike");
     //props 로 받은 건 useState 로 변경
@@ -9,6 +10,7 @@ const Hello = ({ age }) => {
 
     return (
         <div>
+            <h1 className={styles.box}>Hello</h1>
             <p>
                 {name} ({age}) : {msg}
             </p>
