@@ -11,7 +11,6 @@ const DayList = () => {
                         <Link to={`/day/${day.day}`}>Day {day.day}</Link>
                     </li>
                 );
-                console.log(day.day);
             })}
         </ul>
     );

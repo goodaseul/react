@@ -11,6 +11,8 @@ const Hello = ({ age }) => {
     return (
         <div>
             <h1 className={styles.box}>Hello</h1>
+            {/* <button>Show name</button>
+            <button>Show age</button> */}
             <p>
                 {name} ({age}) : {msg}
             </p>
