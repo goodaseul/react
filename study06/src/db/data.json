@@ -1,43 +1,84 @@
 {
     "days": [
-        { "id": 1, "day": 1 },
-        { "id": 2, "day": 2 },
-        { "id": 3, "day": 3 }
+        {
+            "id": "1",
+            "day": 1
+        },
+        {
+            "id": "2",
+            "day": 2
+        },
+        {
+            "id": "3",
+            "day": 3
+        },
+        {
+            "id": "d90a",
+            "day": 4
+        }
     ],
     "words": [
         {
-            "id": 1,
+            "id": "1",
             "day": 1,
             "eng": "book",
             "kor": "책",
             "isDone": false
         },
         {
-            "id": 2,
+            "id": "2",
             "day": 1,
             "eng": "apple",
             "kor": "사과",
             "isDone": false
         },
         {
-            "id": 3,
-            "day": 2,
-            "eng": "car",
-            "kor": "자동차",
-            "isDone": false
-        },
-        {
-            "id": 4,
-            "day": 2,
-            "eng": "pen",
-            "kor": "펜",
-            "isDone": false
-        },
-        {
-            "id": 5,
+            "id": "5",
             "day": 3,
             "eng": "friend",
             "kor": "친구",
+            "isDone": false
+        },
+        {
+            "id": "37df",
+            "day": 2,
+            "eng": "lion",
+            "kor": "사자",
+            "isDone": false
+        },
+        {
+            "id": "dc12",
+            "day": 2,
+            "eng": "window",
+            "kor": "창문",
+            "isDone": false
+        },
+        {
+            "id": "396d",
+            "day": 1,
+            "eng": "devil",
+            "kor": "악마",
+            "isDone": false
+        },
+        {
+            "id": "6c73",
+            "day": 4,
+            "eng": "monkey",
+            "kor": "원숭이",
+            "isDone": false
+        },
+        {
+            "id": "8980",
+            "day": 4,
+            "eng": "bottle",
+            "kor": "병",
+            "isDone": true
+        },
+        {
+            "id": "80cc",
+            "day": 3,
+            "eng": "save",
+            "kor": "저장하다",
             "isDone": false
         }
     ]
