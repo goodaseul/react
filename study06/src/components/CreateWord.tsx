@@ -1,17 +1,23 @@
 import { useNavigate } from "react-router-dom";
 
 import React, { useRef, useState } from "react";
-import useFetch from "../hooks/useFetch";
+import useFetch from "../hooks/useFetch.ts";
+import { IDay } from "./DayList";
+
 const CreateWord = () => {
-    const days = useFetch("http://localhost:3001/days");
+    const days: IDay[] = useFetch("http://localhost:3001/days");
     const history = useNavigate();
     const [isLoading, setIsLoading] = useState(false);
 
-    const onSubmit = (e) => {
+    const onSubmit = (e: React.FormEvent) => {
         e.preventDefault();
 
-        if (!isLoading) {
+        if (!isLoading && dayRef.current && engRef.current && korRef.current) {
             setIsLoading(true);
+            const day = Number(dayRef.current.value);
+            const eng = engRef.current.value;
+            const kor = korRef.current.value;
+
             fetch("http://localhost:3001/words/", {
                 //요청의 옵션
                 method: "POST",
@@ -19,24 +25,24 @@ const CreateWord = () => {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify({
-                    day: Number(dayRef.current.value),
-                    eng: engRef.current.value,
-                    kor: korRef.current.value,
+                    day,
+                    eng,
+                    kor,
                     isDone: false,
                 }),
             }).then((res) => {
                 if (res.ok) {
                     alert("생성이 완료 되었습니다");
-                    history(`/day/${dayRef.current.value}`);
+                    history(`/day/${day}`);
                     setIsLoading(false);
                 }
             });
         }
     };
 
-    const engRef = useRef(null);
-    const korRef = useRef(null);
-    const dayRef = useRef(null);
+    const engRef = useRef<HTMLInputElement>(null);
+    const korRef = useRef<HTMLInputElement>(null);
+    const dayRef = useRef<HTMLSelectElement>(null);
 
     return (
         <form onSubmit={onSubmit}>

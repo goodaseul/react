@@ -1,16 +1,18 @@
 import "./App.css";
 import Header from "./components/Header";
-import DayList from "./components/DayList";
-import Day from "./components/Day";
+import DayList from "./components/DayList.tsx";
+import Day from "./components/Day.tsx";
 import EmptyPage from "./components/EmptyPage";
 import CreateDay from "./components/CreateDay";
 
 import { Routes, Route } from "react-router-dom";
-import CreateWord from "./components/CreateWord";
+import CreateWord from "./components/CreateWord.tsx";
 
 export default function App() {
     return (
         <div className="App">
+            {/* 1. npm install -g json-server 2. json-server --watch ./src/db/data.json --port 3001 */}
+            {/* 타입스크립트 npm install typescript @types/node @types/react @types/react-dom @types/jest @types/react-router-dom  */}
             <Header />
             <Routes>
                 <Route path="/" element={<DayList></DayList>} />

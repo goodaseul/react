@@ -1,6 +1,17 @@
 import React, { useState } from "react";
 
-const Word = ({ word: w }) => {
+interface IProps {
+    word: IWord;
+}
+export interface IWord {
+    id: number;
+    day: string;
+    eng: string;
+    kor: string;
+    isDone: boolean;
+}
+
+const Word = ({ word: w }: IProps) => {
     // 새로운 변수명으로 할당할 수 있음
     const [word, setWord] = useState(w);
     const [isShow, setIsShow] = useState(false);
@@ -33,7 +44,7 @@ const Word = ({ word: w }) => {
                 method: "DELETE",
             }).then((res) => {
                 if (res.ok) {
-                    setWord({ id: 0 });
+                    setWord({ ...word, id: 0 });
                 }
             });
         }
