@@ -1,3 +1,4 @@
+import { useState } from "react";
 import styled from "styled-components";
 
 //object 설명해주는 interface
@@ -22,8 +23,19 @@ const Container = styled.div<ContainerProps>`
 `;
 
 const Circle = ({ bgColor, borderColor, text = "default text" }: CircleProps) => {
+    // const [value, setValue] = useState<number | string>(0); // 숫자 or 문자
+    // setValue(2);
+    // setValue("hello");
+    // setValue(true);
+
+    const [counter, setCounter] = useState(1);
+
     return (
         <Container bgColor={bgColor} borderColor={borderColor ?? bgColor}>
+            {/*
+            borderColor 가 있다면 < borderColor 사용 
+            borderColor 가 undefined 이라면 bgColor 로 기초값을 할게
+             */}
             {text}
         </Container>
     );
