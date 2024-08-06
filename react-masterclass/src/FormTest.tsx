@@ -9,7 +9,7 @@ const H1 = styled.h1`
     color: ${(props) => props.theme.textColor};
 `;
 
-function App() {
+function FormTest() {
     const [username, setUsername] = useState("");
     const onChange = (event: React.FormEvent<HTMLInputElement>) => {
         console.log(event.currentTarget.value);
@@ -36,4 +36,4 @@ function App() {
     );
 }
 
-export default App;
+export default FormTest;
