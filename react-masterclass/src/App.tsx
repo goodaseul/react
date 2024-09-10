@@ -2,6 +2,8 @@ import { createGlobalStyle } from "styled-components";
 import Router from "./Router";
 import { Helmet } from "react-helmet-async";
 
+/* 전체 document에 적용되는 css => createGlobalStyle는 컴포넌트 하나를 만드는데
+그 컴포넌트는 렌더링 될 때 전역 스코프에 스타일들을 올려줌 => 고립되지 않고 전체에 적용됨 */
 const GlobalStyle = createGlobalStyle`
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -57,10 +59,11 @@ body{
     font-family: "IBM Plex Sans KR", sans-serif;
     background-color: ${(props) => props.theme.bgColor};
     color: ${(props) => props.theme.textColor}
-
 }
+// add options
 a{
     text-decoration: none;
+    color: inherit;
 }
 `;
 
