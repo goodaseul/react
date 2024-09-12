@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useParams, useLocation } from "react-router";
 import styled from "styled-components";
 const Container = styled.div`
@@ -28,14 +28,13 @@ interface RouteState {
         name: string;
     };
 }
-
 const Coin = () => {
     const [loading, setLoading] = useState(true);
+    const { coinID } = useParams();
     /* 
         react-router-dom v6 이상 > 
         useParams쓰는 순간 타입이 string or undefined로 됨.
     */
-    const { coinID } = useParams();
     /*
         react-router-dom v6 이상 > 
         제네릭을 지원하지 않는다고 한다
@@ -48,6 +47,16 @@ const Coin = () => {
                     vs
     */
     const { state } = useLocation() as RouteState;
+    const [info, setInfo] = useState({});
+    const [priceInfo, setPriceInfo] = useState({});
+    useEffect(() => {
+        (async () => {
+            const infoData = await (await fetch(`https://api.coinpaprika.com/v1/coins/${coinID}`)).json();
+            setInfo(infoData);
+            const priceData = await (await fetch(`https://api.coinpaprika.com/v1/tickers/${coinID}`)).json();
+            setPriceInfo(priceData);
+        })();
+    }, []);
 
     return (
         <Container>
