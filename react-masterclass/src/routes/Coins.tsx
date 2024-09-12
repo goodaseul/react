@@ -22,8 +22,11 @@ const Coin = styled.li`
     border-radius: 15px;
     a {
         padding: 20px;
-        display: block;
         transition: color 0.2s ease-in;
+
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
     }
     &:hover {
         a {
@@ -39,6 +42,12 @@ const Title = styled.h1`
 const Loader = styled.div`
     text-align: center;
 `;
+const Img = styled.img`
+    width: 35px;
+    height: 35px;
+    margin-right: 10px;
+`;
+const CoinWrapper = styled.div``;
 interface CoinInterface {
     id: string;
     name: string;
@@ -72,7 +81,10 @@ const Coins = () => {
                 <CoinList>
                     {coins.map((coin) => (
                         <Coin key={coin.rank}>
-                            <Link to={`/${coin.id}`}>{coin.name} &rarr;</Link>
+                            <Link to={`/${coin.id}`} state={{ name: coin.name }}>
+                                <Img src={`https://static.coinpaprika.com/coin/${coin.id}/logo.png`} />
+                                {coin.name} &rarr;
+                            </Link>
                         </Coin>
                     ))}
                 </CoinList>
