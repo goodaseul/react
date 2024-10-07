@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { Outlet, useParams, useLocation } from "react-router";
+import { Outlet, useParams, useLocation, useMatch } from "react-router";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -45,6 +46,26 @@ const Description = styled.p`
 
 const Loader = styled.div`
     text-align: center;
+`;
+
+const Tabs = styled.div`
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin: 25px 0px;
+    gap: 10px;
+`;
+const Tab = styled.span<{ $isActive: boolean }>`
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 400;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 7px 0px;
+    border-radius: 10px;
+    a {
+        display: block;
+        color: ${(props) => (props.$isActive ? props.theme.accentColor : props.theme.textColor)};
+    }
 `;
 
 interface RouteState {
@@ -129,6 +150,8 @@ const Coin = () => {
     const { state } = useLocation() as RouteState;
     const [info, setInfo] = useState<IInfoData>();
     const [priceInfo, setPriceInfo] = useState<IPriceData>();
+    const priceMatch = useMatch("/:coinId/chart");
+    const chartMatch = useMatch("/:coinId/chart");
     useEffect(() => {
         (async () => {
             const infoData = await (await fetch(`https://api.coinpaprika.com/v1/coins/${coinID}`)).json();
@@ -180,6 +203,15 @@ const Coin = () => {
                             <span>{priceInfo?.max_supply}</span>
                         </OverviewItem>
                     </Overview>
+
+                    <Tabs>
+                        <Tab $isActive={chartMatch !== null}>
+                            <Link to={`/${coinID}/chart`}>Chart</Link>
+                        </Tab>
+                        <Tab $isActive={priceMatch !== null}>
+                            <Link to={`/${coinID}/price`}>Price</Link>
+                        </Tab>
+                    </Tabs>
 
                     <Outlet />
                 </>
