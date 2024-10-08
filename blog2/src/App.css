@@ -6,11 +6,9 @@
   font-weight: 400;
   font-style: normal;
 }
-
 * .noto {
   font-family: "Noto Sans KR", sans-serif;
 }
-
 * button {
   cursor: pointer;
   background: darkblue;
@@ -20,7 +18,6 @@
   border: none;
   margin: 1rem 0.5rem;
 }
-
 * .inner {
   padding: 0 1.5rem;
 }
@@ -32,62 +29,51 @@
   color: #fff;
   padding: 1rem 0;
 }
-
 .App .section_input {
   border-bottom: 1px solid #000;
 }
-
 .App .section_input h2 {
   font-size: 1.3rem;
   margin: 2rem 0 1rem;
 }
-
 .App .section_input .input_area {
   margin-bottom: 2rem;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
 }
-
 .App .section_input .input_area input {
   width: 84%;
   padding: 0 0.5rem;
 }
-
 .App .section_input .input_area button {
   padding: 0.5rem;
   margin: 0;
   width: 15%;
 }
-
 .App .section_list {
   padding: 1rem 0;
 }
-
 .App .section_list .list {
   position: relative;
   padding: 1rem;
   border-bottom: 2.5px dotted darkblue;
 }
-
 .App .section_list .list .headline {
   text-align: right;
   margin-bottom: 1rem;
   color: darkblue;
 }
-
 .App .section_list .list .headline h2 {
   text-align: left;
   cursor: pointer;
   margin-bottom: 1rem;
 }
-
 .App .section_list .list .headline p {
   display: inline-block;
   cursor: pointer;
   font-family: "Noto Sans KR", sans-serif !important;
 }
-
 .App .section_list .list .remove {
   border-radius: 100%;
   width: 1.5rem;
@@ -105,12 +91,10 @@
   background-color: #eee;
   color: #000;
 }
-
 .App .section_list .list .remove:hover {
   background-color: red;
   color: #fff;
 }
-
 .App .modal {
   width: 100%;
   height: 100%;
@@ -121,27 +105,22 @@
   color: #fff;
   padding: 6rem 1rem 0;
 }
-
 .App .modal .closebtn {
   position: absolute;
   right: 1rem;
   top: 1rem;
 }
-
 .App .modal h4 {
   font-size: 2rem;
   margin-bottom: 1rem;
 }
-
 .App .modal .date {
   text-align: right;
   font-family: "Noto Sans KR", sans-serif !important;
 }
-
 .App .modal .content {
   font-size: 1.5rem;
 }
-
 .App .modal .changeBtn {
   position: relative;
 }

@@ -1,6 +1,9 @@
-import React, { useEffect, useState } from "react";
+// import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+// import { useQuery } from "react-query";
+import { useQuery } from "@tanstack/react-query";
+import { fetchCoins } from "../api";
 
 const Container = styled.div`
     padding: 0 20px;
@@ -57,28 +60,36 @@ interface CoinInterface {
     is_active: boolean;
     type: string;
 }
-const Coins = () => {
-    const [coins, setCoins] = useState<CoinInterface[]>([]);
-    const [loading, setLoading] = useState(true);
-    useEffect(() => {
-        //즉시 실행 function
-        (async () => {
-            const response = await fetch(`https://api.coinpaprika.com/v1/coins`);
-            const json = await response.json();
-            setCoins(json.slice(0, 100));
-            setLoading(false);
-        })();
-    }, []);
+const Main = () => {
+    // ** react-query
+    const { isLoading, data } = useQuery<CoinInterface[]>({
+        queryKey: ["allCoins"],
+        queryFn: fetchCoins,
+        select: (data) => data.slice(0, 100),
+    });
+
+    // const [coins, setCoins] = useState<CoinInterface[]>([]);
+    // const [loading, setLoading] = useState(true);
+    // useEffect(() => {
+    //     //즉시 실행 function
+    //     (async () => {
+    //         const response = await fetch(`https://api.coinpaprika.com/v1/coins`);
+    //         const json = await response.json();
+    //         setCoins(json.slice(0, 100));
+    //         setLoading(false);
+    //     })();
+    // }, []);
+
     return (
         <Container>
             <Header>
                 <Title>코인</Title>
             </Header>
-            {loading ? (
+            {isLoading ? (
                 <Loader>Loading....</Loader>
             ) : (
                 <CoinList>
-                    {coins.map((coin) => (
+                    {data?.map((coin) => (
                         <Coin key={coin.rank}>
                             <Link to={`/${coin.id}`} state={{ name: coin.name }}>
                                 <Img src={`https://static.coinpaprika.com/coin/${coin.id}/logo.png`} />
@@ -92,4 +103,4 @@ const Coins = () => {
     );
 };
 
-export default Coins;
+export default Main;
