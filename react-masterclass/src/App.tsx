@@ -1,6 +1,7 @@
 import { createGlobalStyle } from "styled-components";
 import Router from "./Router";
 import { Helmet } from "react-helmet-async";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 /* 전체 document에 적용되는 css => createGlobalStyle는 컴포넌트 하나를 만드는데
 그 컴포넌트는 렌더링 될 때 전역 스코프에 스타일들을 올려줌 => 고립되지 않고 전체에 적용됨 */
@@ -75,6 +76,7 @@ function App() {
             </Helmet>
             <GlobalStyle />
             <Router />
+            <ReactQueryDevtools initialIsOpen={false} />
         </>
     );
 }
