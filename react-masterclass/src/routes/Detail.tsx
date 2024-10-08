@@ -5,71 +5,6 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { fetchCoinInfo, fetchCoinTickers } from "../api";
 
-const Container = styled.div`
-    padding: 0 20px;
-    max-width: 480px;
-    margin: 0 auto;
-`;
-
-const Header = styled.header`
-    height: 10vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-`;
-
-const Title = styled.h1`
-    color: ${(props) => props.theme.accentColor};
-    font-size: 48px;
-    font-weight: bold;
-`;
-
-const Overview = styled.div`
-    display: flex;
-    justify-content: space-between;
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 10px 20px;
-    border-radius: 10px;
-`;
-const OverviewItem = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    span:first-child {
-        font-size: 10px;
-        font-weight: 400;
-        text-transform: uppercase;
-        margin-bottom: 5px;
-    }
-`;
-const Description = styled.p`
-    margin: 20px 0px;
-`;
-
-const Loader = styled.div`
-    text-align: center;
-`;
-
-const Tabs = styled.div`
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    margin: 25px 0px;
-    gap: 10px;
-`;
-const Tab = styled.span<{ $isActive: boolean }>`
-    text-align: center;
-    text-transform: uppercase;
-    font-size: 12px;
-    font-weight: 400;
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 7px 0px;
-    border-radius: 10px;
-    a {
-        display: block;
-        color: ${(props) => (props.$isActive ? props.theme.accentColor : props.theme.textColor)};
-    }
-`;
-
 interface RouteState {
     state: {
         name: string;
@@ -228,7 +163,7 @@ const Coin = () => {
                         </Tab>
                     </Tabs>
 
-                    <Outlet />
+                    <Outlet context={{ coinID }} />
                 </>
             )}
         </Container>
@@ -236,3 +171,63 @@ const Coin = () => {
 };
 
 export default Coin;
+
+const Container = styled.div`
+    padding: 0 20px;
+    max-width: 480px;
+    margin: 0 auto;
+`;
+const Header = styled.header`
+    height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`;
+const Title = styled.h1`
+    color: ${(props) => props.theme.accentColor};
+    font-size: 48px;
+    font-weight: bold;
+`;
+const Overview = styled.div`
+    display: flex;
+    justify-content: space-between;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px 20px;
+    border-radius: 10px;
+`;
+const OverviewItem = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    span:first-child {
+        font-size: 10px;
+        font-weight: 400;
+        text-transform: uppercase;
+        margin-bottom: 5px;
+    }
+`;
+const Description = styled.p`
+    margin: 20px 0px;
+`;
+const Loader = styled.div`
+    text-align: center;
+`;
+const Tabs = styled.div`
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin: 25px 0px;
+    gap: 10px;
+`;
+const Tab = styled.span<{ $isActive: boolean }>`
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 400;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 7px 0px;
+    border-radius: 10px;
+    a {
+        display: block;
+        color: ${(props) => (props.$isActive ? props.theme.accentColor : props.theme.textColor)};
+    }
+`;

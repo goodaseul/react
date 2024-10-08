@@ -3,6 +3,21 @@ import Router from "./Router";
 import { Helmet } from "react-helmet-async";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
+function App() {
+    return (
+        <>
+            <Helmet>
+                <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" />
+            </Helmet>
+            <GlobalStyle />
+            <Router />
+            <ReactQueryDevtools initialIsOpen={false} />
+        </>
+    );
+}
+
+export default App;
+
 /* 전체 document에 적용되는 css => createGlobalStyle는 컴포넌트 하나를 만드는데
 그 컴포넌트는 렌더링 될 때 전역 스코프에 스타일들을 올려줌 => 고립되지 않고 전체에 적용됨 */
 const GlobalStyle = createGlobalStyle`
@@ -67,18 +82,3 @@ a{
     color: inherit;
 }
 `;
-
-function App() {
-    return (
-        <>
-            <Helmet>
-                <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" />
-            </Helmet>
-            <GlobalStyle />
-            <Router />
-            <ReactQueryDevtools initialIsOpen={false} />
-        </>
-    );
-}
-
-export default App;

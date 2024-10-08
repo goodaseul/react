@@ -13,3 +13,12 @@ export function fetchCoinInfo(coinID: string) {
 export function fetchCoinTickers(coinID: string) {
     return fetch(`${BASE_URL}/tickers/${coinID}`).then((response) => response.json());
 }
+
+export function fetchCoinHistory(coinID: string) {
+    const endDate = Math.floor(Date.now() / 1000); // 현재 시간을 초로 나타냄 , floor 내림 처리 ceil > 올림 처리
+    const startDate = endDate - 60 * 60 * 23 * 7 * 1; // 현재 시간에서 1주 -1 시간에 해당하는 초를 뺌;
+
+    // return fetch(`${BASE_URL}/coin/${coinID}/oblcv/historical?start=${startDate}&end=${endDate}`).then((response) => response.json());
+    // return fetch(`${BASE_URL}/coin/${coinID}/oblcv/historical`).then((response) => response.json());
+    return fetch(`https://ohlcv-api.nomadcoders.workers.dev?coinId=${coinID}`).then((response) => response.json());
+}
