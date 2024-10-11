@@ -23,6 +23,8 @@ const Chart = () => {
     const { isLoading, data } = useQuery<IHistorical[]>({
         queryKey: ["ohlcv", coinID],
         queryFn: () => fetchCoinHistory(`${coinID}`),
+        //refetch /query 를 5000 마다 refetch하는 거
+        // refetchInterval: 5000,
     });
     return (
         <div>

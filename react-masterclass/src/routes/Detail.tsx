@@ -4,6 +4,7 @@ import { Outlet, useParams, useLocation, useMatch } from "react-router";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { fetchCoinInfo, fetchCoinTickers } from "../api";
+import { Helmet } from "react-helmet";
 
 interface RouteState {
     state: {
@@ -113,6 +114,9 @@ const Detail = () => {
 
     return (
         <Container>
+            <Helmet>
+                <title>{state?.name ? state.name : loading ? "Loading ..." : infoData?.name}</title>
+            </Helmet>
             <Header>
                 {/* 
                     Coins.tsx state.name 을 불러옴> 링크타고 들어오면 state.name존재
