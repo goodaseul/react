@@ -4,8 +4,8 @@ import { fetchCoinHistory } from "../api";
 import ApexChart from "react-apexcharts";
 
 interface IHistorical {
-    time_open: string;
-    time_close: string;
+    time_open: number;
+    time_close: number;
     open: number;
     high: number;
     low: number;
@@ -33,18 +33,49 @@ const Chart = () => {
                     type="line"
                     series={[
                         {
-                            name: "hello",
-                            data: [1, 2, 3, 4, 5],
+                            name: "Price",
+                            data: data?.map((price) => price.close) as number[],
                         },
                         {
-                            name: "sales",
+                            name: "Sales",
                             data: [12, 22, 32, 42, 52],
                         },
                     ]}
                     options={{
                         chart: {
                             width: 500,
-                            height: 500,
+                            height: 300,
+                            toolbar: {
+                                show: false,
+                            },
+                            background: "transparent",
+                        },
+                        grid: {
+                            show: false,
+                        },
+                        stroke: {
+                            curve: "smooth",
+                            width: 4,
+                        },
+                        yaxis: {
+                            show: false,
+                        },
+                        xaxis: {
+                            axisBorder: { show: false },
+                            axisTicks: { show: false },
+                            labels: { show: false },
+                            type: "datetime",
+                            categories: data?.map((price) => new Date(price.time_close * 1000).toUTCString()),
+                        },
+                        fill: {
+                            type: "gradient",
+                            gradient: { gradientToColors: ["blue"], stops: [0, 100] },
+                        },
+                        colors: ["red"],
+                        tooltip: {
+                            y: {
+                                formatter: (value) => `$${value.toFixed(3)}`,
+                            },
                         },
                     }}
                 />

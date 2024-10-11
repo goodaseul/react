@@ -22,6 +22,8 @@ const Main = () => {
         select: (data) => data.slice(0, 100),
     });
 
+    console.log(data);
+
     // const [coins, setCoins] = useState<CoinInterface[]>([]);
     // const [loading, setLoading] = useState(true);
     // useEffect(() => {

@@ -66,7 +66,7 @@ interface IPriceData {
         };
     };
 }
-const Coin = () => {
+const Detail = () => {
     const { coinID } = useParams();
     /* 
         react-router-dom v6 이상 > 
@@ -96,7 +96,7 @@ const Coin = () => {
         queryKey: ["tickers", coinID],
         queryFn: () => fetchCoinTickers(`${coinID}`),
     });
-
+    const loading = infoLoading || trickersLoading;
     // const [loading, setLoading] = useState(true);
     // const [info, setInfo] = useState<IInfoData>();
     // const [priceInfo, setPriceInfo] = useState<IPriceData>();
@@ -110,8 +110,6 @@ const Coin = () => {
     //         setLoading(false);
     //     })();
     // }, [coinID]);
-
-    const loading = infoLoading || trickersLoading;
 
     return (
         <Container>
@@ -138,8 +136,8 @@ const Coin = () => {
                             <span>${infoData?.symbol}</span>
                         </OverviewItem>
                         <OverviewItem>
-                            <span>Open Source:</span>
-                            <span>{infoData?.open_source ? "Yes" : "No"}</span>
+                            <span>Price :</span>
+                            <span>{tickersData?.quotes.USD.price.toFixed(3)}</span>
                         </OverviewItem>
                     </Overview>
                     <Description>{infoData?.description}</Description>
@@ -170,7 +168,7 @@ const Coin = () => {
     );
 };
 
-export default Coin;
+export default Detail;
 
 const Container = styled.div`
     padding: 0 20px;
