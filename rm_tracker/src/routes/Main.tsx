@@ -80,7 +80,7 @@ const Header = styled.header`
 const CoinList = styled.ul``;
 const Coin = styled.li`
     background-color: #eee;
-    color: ${(props) => props.theme.accentColor};
+    color: ${(props) => props.theme.textColor};
     margin: 10px;
     border-radius: 15px;
     a {

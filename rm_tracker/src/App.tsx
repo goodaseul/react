@@ -2,16 +2,24 @@ import { createGlobalStyle } from "styled-components";
 import Router from "./Router";
 import { Helmet } from "react-helmet-async";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { ThemeProvider } from "styled-components";
+import { darkTheme, lightTheme } from "./theme";
+import { useState } from "react";
 
 function App() {
+    const [isDark, setIsDark] = useState(false);
+    const toggleDark = () => setIsDark((current) => !current);
     return (
         <>
-            <Helmet>
-                <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" />
-            </Helmet>
-            <GlobalStyle />
-            <Router />
-            <ReactQueryDevtools initialIsOpen={false} />
+            <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
+                <button onClick={toggleDark}>Toggle Mode</button>
+                <Helmet>
+                    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" />
+                </Helmet>
+                <GlobalStyle />
+                <Router />
+                <ReactQueryDevtools initialIsOpen={false} />
+            </ThemeProvider>
         </>
     );
 }
