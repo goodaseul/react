@@ -32,8 +32,8 @@ const Main = () => {
 
     // console.log(data);
 
+    // 아톰을 받고 아톰을 변경하는 함수를 반환 - 일반적인 setState 함수와 똑같이 동작
     const setDarkAtom = useSetRecoilState(isDarkAtom);
-
     const toggleDarkAtom = () => setDarkAtom((prev) => !prev);
     // const [coins, setCoins] = useState<CoinInterface[]>([]);
     // const [loading, setLoading] = useState(true);

@@ -13,6 +13,7 @@ function App() {
     // const toggleDark = () => setIsDark((current) => !current);
 
     // atom 버블 사용하는 법
+    // 아톰의 값
     const isDark = useRecoilValue(isDarkAtom);
     return (
         <>
