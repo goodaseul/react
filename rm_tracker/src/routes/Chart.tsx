@@ -2,6 +2,8 @@ import { useQuery } from "@tanstack/react-query";
 import { useOutletContext } from "react-router-dom";
 import { fetchCoinHistory } from "../api";
 import ApexChart from "react-apexcharts";
+import { useRecoilValue } from "recoil";
+import { isDarkAtom } from "../atoms";
 
 interface IHistorical {
     time_open: number;
@@ -20,7 +22,7 @@ interface ChartProps {
 interface ICoinProps {
     isDark: boolean;
 }
-const Chart = ({ isDark }: ICoinProps) => {
+const Chart = () => {
     const { coinID } = useOutletContext<ChartProps>();
     const { isLoading, data } = useQuery<IHistorical[]>({
         queryKey: ["ohlcv", coinID],
@@ -28,6 +30,9 @@ const Chart = ({ isDark }: ICoinProps) => {
         //refetch /query 를 5000 마다 refetch하는 거
         // refetchInterval: 5000,
     });
+
+    const isDark = useRecoilValue(isDarkAtom);
+
     return (
         <div>
             {isLoading ? (
