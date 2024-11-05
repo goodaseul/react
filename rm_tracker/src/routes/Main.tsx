@@ -15,7 +15,12 @@ interface CoinInterface {
     is_active: boolean;
     type: string;
 }
-const Main = () => {
+
+interface ICoinsProps {
+    toggleDark: () => void;
+}
+
+const Main = ({ toggleDark }: ICoinsProps) => {
     // ** react-query
     const { isLoading, data } = useQuery<CoinInterface[]>({
         queryKey: ["allCoins"],
@@ -44,7 +49,7 @@ const Main = () => {
             </Helmet>
             <Header>
                 <Title>코인</Title>
-                <button>Toggle Dark Mode</button>
+                <button onClick={toggleDark}>Toggle Dark Mode</button>
             </Header>
             {isLoading ? (
                 <Loader>Loading....</Loader>

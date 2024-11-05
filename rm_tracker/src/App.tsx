@@ -16,7 +16,7 @@ function App() {
                     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" />
                 </Helmet>
                 <GlobalStyle />
-                <Router />
+                <Router isDark={isDark} toggleDark={toggleDark} />
                 <ReactQueryDevtools initialIsOpen={false} />
             </ThemeProvider>
         </>

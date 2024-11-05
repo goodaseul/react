@@ -67,6 +67,7 @@ interface IPriceData {
         };
     };
 }
+
 const Detail = () => {
     const { coinID } = useParams();
     /* 
