@@ -1,8 +1,11 @@
 import { useRecoilState, useRecoilValue } from "recoil";
 import { createGlobalStyle } from "styled-components";
 import { hourSelector, minutesState } from "./atoms";
+// 아톰 set
+import { Draggable, DragDropContext, Droppable } from "@hello-pangea/dnd";
 
 function App() {
+    // 아톰 set
     // 아톰 값 | 아톰을 수정하는 함수
     const [minutes, setMinutes] = useRecoilState(minutesState);
     const [hours, setHours] = useRecoilState(hourSelector);
@@ -12,6 +15,9 @@ function App() {
     const onHourschange = (event: React.FormEvent<HTMLInputElement>) => {
         setHours(+event.currentTarget.value);
     };
+    // 아톰 set
+
+    const onDragEnd = () => {};
     return (
         <>
             <GlobalStyle />
@@ -19,6 +25,32 @@ function App() {
                 <input value={minutes} onChange={onMinutesChange} type="number" placeholder="Minutes" />
                 <input value={hours} onChange={onHourschange} type="number" placeholder="hours" />
             </div>
+            <DragDropContext onDragEnd={onDragEnd}>
+                <div>
+                    <Droppable droppableId="one">
+                        {(magic) => (
+                            <ul ref={magic.innerRef} {...magic.droppableProps}>
+                                <Draggable draggableId="first" index={0}>
+                                    {(magic) => (
+                                        <li ref={magic.innerRef} {...magic.draggableProps}>
+                                            <span {...magic.dragHandleProps}>🥰</span>
+                                            One
+                                        </li>
+                                    )}
+                                </Draggable>
+                                <Draggable draggableId="second" index={1}>
+                                    {(magic) => (
+                                        <li ref={magic.innerRef} {...magic.draggableProps}>
+                                            <span {...magic.dragHandleProps}>🥰</span>
+                                            Two
+                                        </li>
+                                    )}
+                                </Draggable>
+                            </ul>
+                        )}
+                    </Droppable>
+                </div>
+            </DragDropContext>
         </>
     );
 }
