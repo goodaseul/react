@@ -12,17 +12,17 @@ const Card = styled.div<{ isDragging: boolean }>`
     box-shadow: ${(props) => (props.isDragging ? "0px 2px 25px rgba(0,0,0,.05)" : "none")};
 `;
 interface IDraggableCardProps {
-    toDo: string;
+    toDoId: number;
+    toDoText: string;
     index: number;
 }
 
-const DraggableCard = ({ toDo, index }: IDraggableCardProps) => {
-    console.log(toDo, "has been rendered");
+const DraggableCard = ({ toDoId, toDoText, index }: IDraggableCardProps) => {
     return (
-        <Draggable key={toDo} draggableId={toDo} index={index}>
+        <Draggable draggableId={toDoId + ""} index={index}>
             {(magic, info) => (
                 <Card isDragging={info.isDragging} ref={magic.innerRef} {...magic.dragHandleProps} {...magic.draggableProps}>
-                    {toDo}
+                    {toDoText}
                 </Card>
             )}
         </Draggable>
