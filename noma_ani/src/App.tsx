@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
+import { useRef } from "react";
 
 const Wrapper = styled.div`
     display: flex;
@@ -72,6 +73,17 @@ const Box3 = styled(motion.div)`
     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1), 0 10px 20px rgba(0, 0, 0, 0.06);
 `;
 
+const BiggerBox = styled.div`
+    width: 600px;
+    height: 600px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+`;
+
 const boxVariants2 = {
     hover: { scale: 1.5, rotateZ: 90 },
     click: { borderRadius: "100px", scale: 1 },
@@ -79,6 +91,7 @@ const boxVariants2 = {
 };
 
 function App() {
+    const biggerBoxRef = useRef<HTMLDivElement>(null);
     return (
         <Wrapper>
             {/* <Box transition={{ type: "spring", delay: 1, bounce: 0.5 }} initial={{ scale: 0 }} animate={{ scale: 1, rotateZ: 360 }}> 기본 애니메이션
@@ -93,7 +106,9 @@ function App() {
 
             <Box2 variants={boxVariants2} whileHover="hover" whileTap="click" />
 
-            <Box3 drag dragConstraints={{ top: 50 }} variants={boxVariants2} whileDrag="drag" />
+            <BiggerBox ref={biggerBoxRef}>
+                <Box3 drag dragConstraints={biggerBoxRef} dragSnapToOrigin dragElastic={0.5} variants={boxVariants2} whileDrag="drag" />
+            </BiggerBox>
         </Wrapper>
     );
 }
