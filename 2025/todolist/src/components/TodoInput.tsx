@@ -15,7 +15,7 @@ const TodoInput: React.FC<TodoInputProps> = ({ inputValue, setInputValue, handle
 
     return (
         <div className="inputbox">
-            <input type="text" value={inputValue} onKeyDown={handleKeyDown} onChange={(e) => setInputValue(e.target.value)} placeholder="Add a new task..." />
+            <input type="text" value={inputValue} onKeyDown={handleKeyDown} onChange={(e) => setInputValue(e.target.value)} placeholder="할 일을 적어주세요." />
             <button onClick={handleAddTodo}>Add</button>
         </div>
     );

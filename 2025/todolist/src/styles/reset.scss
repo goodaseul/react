@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap");
+
 /* CSS Reset */
 * {
     margin: 0;
@@ -7,7 +9,11 @@
 
 body {
     line-height: 1.5;
-    font-family: Arial, sans-serif;
+
+    font-family: "Black Han Sans", serif;
+    font-weight: 400;
+    font-style: normal;
+
     -webkit-font-smoothing: antialiased;
 }
 
@@ -25,4 +31,9 @@ button {
 ul,
 ol {
     list-style: none;
+}
+input,
+textarea,
+button {
+    font-family: "Black Han Sans", serif;
 }
