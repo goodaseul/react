@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap");
 
 /* CSS Reset */
 * {
@@ -9,12 +9,11 @@
 
 body {
     line-height: 1.5;
-
-    font-family: "Black Han Sans", serif;
-    font-weight: 400;
-    font-style: normal;
-
+    font-family: "Noto Sans KR", serif;
     -webkit-font-smoothing: antialiased;
+    font-size: rem(48px);
+    font-weight: bold;
+    width: 100%;
 }
 
 a {
@@ -35,5 +34,5 @@ ol {
 input,
 textarea,
 button {
-    font-family: "Black Han Sans", serif;
+    font-family: "Noto Sans KR", serif;
 }
